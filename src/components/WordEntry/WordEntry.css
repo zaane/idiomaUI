@@ -1,0 +1,98 @@
+.word-entry {
+  background: #ffffff;
+  border: 1px solid #e1e5e9;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 0.75rem;
+  transition: box-shadow 0.2s;
+}
+
+.word-entry:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.word-entry__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.75rem;
+  gap: 1rem;
+}
+
+.word-entry__word {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.word-entry__meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.25rem;
+  flex-shrink: 0;
+}
+
+.word-entry__pos {
+  background-color: #3498db;
+  color: white;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.word-entry__pronunciation {
+  font-family: 'Courier New', monospace;
+  font-size: 0.9rem;
+  color: #7f8c8d;
+  background-color: #f8f9fa;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+}
+
+.word-entry__content {
+  border-top: 1px solid #ecf0f1;
+  padding-top: 0.75rem;
+}
+
+.word-entry__gloss {
+  margin: 0 0 0.5rem 0;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #34495e;
+}
+
+.word-entry__form-info {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  font-size: 0.9rem;
+}
+
+.word-entry__form-label {
+  color: #7f8c8d;
+  font-weight: 500;
+}
+
+.word-entry__form-value {
+  color: #2980b9;
+  font-style: italic;
+}
+
+@media (max-width: 600px) {
+  .word-entry__header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  
+  .word-entry__meta {
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+  }
+}

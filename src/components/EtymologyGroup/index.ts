@@ -1,0 +1,1 @@
+export { EtymologyGroup } from './EtymologyGroup';

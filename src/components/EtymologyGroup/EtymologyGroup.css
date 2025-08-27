@@ -1,0 +1,29 @@
+.etymology-group {
+  margin-bottom: 2rem;
+}
+
+.etymology-group__header {
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #3498db;
+}
+
+.etymology-group__title {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #2c3e50;
+  background: linear-gradient(135deg, #3498db, #2980b9);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.etymology-group__entries {
+  display: flex;
+  flex-direction: column;
+}
+
+.etymology-group:last-child {
+  margin-bottom: 0;
+}

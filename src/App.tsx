@@ -23,6 +23,7 @@ function App() {
 
   return (
     <div className="app">
+      <div className="page_container">
       <header className="app__header">
         <h1 className="app__title">Wiktionary Search</h1>
         <p className="app__subtitle">
@@ -53,6 +54,7 @@ function App() {
       <footer className="app__footer">
         <p>Powered by Wiktionary API</p>
       </footer>
+      </div>
     </div>
   )
 }

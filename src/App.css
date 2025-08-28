@@ -39,9 +39,6 @@
 .app__main {
   flex: 1;
   padding: 2rem 1rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
 .app__footer {
@@ -57,8 +54,12 @@
 }
 
 @media (max-width: 768px) {
+  .app__header {
+    padding: 0.75rem 1rem 0.25rem;
+  }
   .app__title {
     font-size: 2rem;
+    margin: 0 0 0.
   }
   
   .app__subtitle {

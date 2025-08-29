@@ -6,6 +6,7 @@
   margin-bottom: 0.75rem;
   transition: box-shadow 0.2s;
   width: 20rem;
+  position: relative;
 }
 
 .word-entry:hover {
@@ -19,6 +20,7 @@
   margin-bottom: 0.75rem;
   gap: 1rem;
 }
+
 
 .word-entry__word {
   margin: 0;
@@ -82,6 +84,56 @@
 .word-entry__form-value {
   color: #2980b9;
   font-style: italic;
+}
+
+.word-entry__anki-button {
+  background-color: #27ae60;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-weight: bold;
+  transition: all 0.2s;
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+}
+
+.word-entry__anki-button:hover {
+  background-color: #229954;
+  transform: scale(1.1);
+}
+
+.word-entry__anki-button:disabled {
+  background-color: #95a5a6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.word-entry__message {
+  margin-top: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.word-entry__message--success {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.word-entry__message--error {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
 }
 
 @media (max-width: 600px) {

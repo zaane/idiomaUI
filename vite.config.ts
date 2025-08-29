@@ -24,6 +24,12 @@ export default defineConfig({
             console.log('Proxy response:', proxyRes.statusCode, req.url);
           });
         }
+      },
+      '/anki': {
+        target: 'http://0.0.0.0:8765/',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/anki/, ''),
+        secure: false
       }
     }
   }

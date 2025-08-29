@@ -25,9 +25,9 @@ function App() {
     <div className="app">
       <div className="page_container">
       <header className="app__header">
-        <h1 className="app__title">Wiktionary Search</h1>
+        <h1 className="app__title">wiktionary for free</h1>
         <p className="app__subtitle">
-          Discover word definitions, pronunciations, and more
+            (even though it's already free)
         </p>
       </header>
 
@@ -52,7 +52,7 @@ function App() {
       </main>
 
       <footer className="app__footer">
-        <p>Powered by Wiktionary API</p>
+        <p>thank you wiktionary</p>
       </footer>
       </div>
     </div>

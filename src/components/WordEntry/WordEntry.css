@@ -5,6 +5,7 @@
   padding: 1rem;
   margin-bottom: 0.75rem;
   transition: box-shadow 0.2s;
+  width: 20rem;
 }
 
 .word-entry:hover {

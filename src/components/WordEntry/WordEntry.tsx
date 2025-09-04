@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import type { WiktionaryEntry } from '../../types/WiktionaryEntry';
 import { formatPartOfSpeech, formatPronunciation } from '../../utils/formatters';
-import { addFlashcard } from '../../services/ankiApi';
+import { addFlashcard, syncAnki } from '../../services/ankiApi';
 import './WordEntry.css';
 
 interface WordEntryProps {
@@ -11,6 +11,8 @@ interface WordEntryProps {
 export function WordEntry({ entry }: WordEntryProps) {
   const [isAdding, setIsAdding] = useState(false);
   const [message, setMessage] = useState<string | null>(null);
+  const [isEditing, setIsEditing] = useState(false);
+  const [editedGloss, setEditedGloss] = useState(entry.gloss);
 
   const handleAddToAnki = async () => {
     setIsAdding(true);
@@ -23,6 +25,13 @@ export function WordEntry({ entry }: WordEntryProps) {
         setMessage(`Error: ${result.error}`);
       } else {
         setMessage('Added to Anki!');
+        
+        // Auto-sync after successful card addition
+        try {
+          await syncAnki();
+        } catch {
+          // Sync failure doesn't affect the main success message
+        }
       }
     } catch {
       setMessage('Failed to connect to Anki');
@@ -30,6 +39,23 @@ export function WordEntry({ entry }: WordEntryProps) {
       setIsAdding(false);
       setTimeout(() => setMessage(null), 3000);
     }
+  };
+
+  const handleEditStart = () => {
+    setIsEditing(true);
+    setEditedGloss(entry.gloss);
+  };
+
+  const handleEditSave = () => {
+    // For now, just update the local state
+    // In a real app, you'd save to backend here
+    setIsEditing(false);
+    entry.gloss = editedGloss; // Direct mutation for demo
+  };
+
+  const handleEditCancel = () => {
+    setIsEditing(false);
+    setEditedGloss(entry.gloss);
   };
 
   return (
@@ -49,7 +75,43 @@ export function WordEntry({ entry }: WordEntryProps) {
       </div>
       
       <div className="word-entry__content">
-        <p className="word-entry__gloss">{entry.gloss}</p>
+        <div className="word-entry__gloss-container">
+          {isEditing ? (
+            <div className="word-entry__gloss-edit">
+              <textarea
+                className="word-entry__gloss-input"
+                value={editedGloss}
+                onChange={(e) => setEditedGloss(e.target.value)}
+                autoFocus
+              />
+              <div className="word-entry__gloss-actions">
+                <button
+                  className="word-entry__gloss-save"
+                  onClick={handleEditSave}
+                >
+                  ✓
+                </button>
+                <button
+                  className="word-entry__gloss-cancel"
+                  onClick={handleEditCancel}
+                >
+                  ✕
+                </button>
+              </div>
+            </div>
+          ) : (
+            <p className="word-entry__gloss">
+              {entry.gloss}
+              <button
+                className="word-entry__gloss-edit-btn"
+                onClick={handleEditStart}
+                title="Edit definition"
+              >
+                ✏️
+              </button>
+            </p>
+          )}
+        </div>
         
         {entry.form_of && (
           <div className="word-entry__form-info">

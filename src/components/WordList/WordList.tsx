@@ -6,9 +6,10 @@ import './WordList.css';
 interface WordListProps {
   entries: WiktionaryEntry[];
   searchQuery?: string;
+  deckName: string;
 }
 
-export function WordList({ entries, searchQuery }: WordListProps) {
+export function WordList({ entries, searchQuery, deckName }: WordListProps) {
   if (entries.length === 0) {
     return null;
   }
@@ -36,6 +37,7 @@ export function WordList({ entries, searchQuery }: WordListProps) {
             key={`${group.etymologyNumber}-${index}`}
             group={group}
             showEtymologyHeader={showEtymologyHeaders}
+            deckName={deckName}
           />
         ))}
       </div>

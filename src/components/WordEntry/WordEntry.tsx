@@ -6,9 +6,10 @@ import './WordEntry.css';
 
 interface WordEntryProps {
   entry: WiktionaryEntry;
+  deckName: string;
 }
 
-export function WordEntry({ entry }: WordEntryProps) {
+export function WordEntry({ entry, deckName }: WordEntryProps) {
   const [isAdding, setIsAdding] = useState(false);
   const [message, setMessage] = useState<string | null>(null);
   const [isEditing, setIsEditing] = useState(false);
@@ -19,12 +20,13 @@ export function WordEntry({ entry }: WordEntryProps) {
     setMessage(null);
 
     try {
-      const result = await addFlashcard(entry.word, entry.gloss);
+      const result = await addFlashcard(entry.word, entry.gloss, deckName);
       
       if (result.error) {
         setMessage(`Error: ${result.error}`);
       } else {
-        setMessage('Added to Anki!');
+        const targetDeck = deckName.trim() || 'wikideck';
+        setMessage(`Added to ${targetDeck}!`);
         
         // Auto-sync after successful card addition
         try {

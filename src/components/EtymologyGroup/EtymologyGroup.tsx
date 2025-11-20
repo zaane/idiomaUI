@@ -5,11 +5,13 @@ import './EtymologyGroup.css';
 interface EtymologyGroupProps {
   group: EtymologyGroupType;
   showEtymologyHeader?: boolean;
+  deckName: string;
 }
 
 export function EtymologyGroup({ 
   group, 
-  showEtymologyHeader = true 
+  showEtymologyHeader = true,
+  deckName
 }: EtymologyGroupProps) {
   const hasMultipleGroups = showEtymologyHeader && group.etymologyNumber !== null;
 
@@ -25,7 +27,7 @@ export function EtymologyGroup({
       
       <div className="etymology-group__entries">
         {group.entries.map((entry) => (
-          <WordEntry key={entry.id} entry={entry} />
+          <WordEntry key={entry.id} entry={entry} deckName={deckName} />
         ))}
       </div>
     </div>
